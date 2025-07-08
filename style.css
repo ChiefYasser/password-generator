@@ -1,0 +1,320 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #FCF7F8 0%, #f0e6e8 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(163, 22, 33, 0.1);
+    border: 1px solid rgba(163, 22, 33, 0.1);
+}
+
+h1 {
+    color: #A31621;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #666;
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 1rem;
+}
+
+.password-display {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+#passwordOutput {
+    width: 100%;
+    padding: 16px 50px 16px 16px;
+    border: 2px solid #FCF7F8;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+    background: #FCF7F8;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+#passwordOutput:focus {
+    outline: none;
+    border-color: #A31621;
+    box-shadow: 0 0 0 3px rgba(163, 22, 33, 0.1);
+}
+
+.copy-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #A31621;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.copy-btn:hover {
+    background: #A31621;
+    color: white;
+    opacity: 1;
+}
+
+.copy-btn.copied {
+    background: #22c55e;
+    color: white;
+}
+
+.controls {
+    margin-bottom: 24px;
+}
+
+.length-control {
+    margin-bottom: 24px;
+}
+
+.length-control label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+#lengthValue {
+    color: #A31621;
+    font-weight: 700;
+}
+
+#lengthSlider {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: #FCF7F8;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#lengthSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #A31621;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(163, 22, 33, 0.3);
+}
+
+#lengthSlider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #A31621;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(163, 22, 33, 0.3);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #A31621;
+    cursor: pointer;
+}
+
+.option label {
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+}
+
+.generate-btn {
+    width: 100%;
+    background: #A31621;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(163, 22, 33, 0.3);
+}
+
+.generate-btn:hover {
+    background: #8a1219;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(163, 22, 33, 0.4);
+}
+
+.generate-btn:active {
+    transform: translateY(0);
+}
+
+.strength-indicator {
+    margin-top: 24px;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 8px;
+    background: #FCF7F8;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    background: #A31621;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.strength-fill.weak {
+    background: #ef4444;
+    width: 25%;
+}
+
+.strength-fill.fair {
+    background: #f59e0b;
+    width: 50%;
+}
+
+.strength-fill.good {
+    background: #10b981;
+    width: 75%;
+}
+
+.strength-fill.strong {
+    background: #22c55e;
+    width: 100%;
+}
+
+#strengthText {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 100vw;
+        padding: 0;
+    }
+    .card {
+        padding: 16px;
+        margin: 8px;
+        border-radius: 10px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .subtitle {
+        font-size: 0.95rem;
+    }
+    .password-display {
+        margin-bottom: 20px;
+    }
+    #passwordOutput {
+        font-size: 1rem;
+        padding: 12px 40px 12px 12px;
+    }
+    .copy-btn {
+        right: 6px;
+        padding: 6px;
+    }
+    .length-control label,
+    .option label {
+        font-size: 0.9rem;
+    }
+    .generate-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    .strength-indicator {
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 350px) {
+    .card {
+        padding: 6px;
+        margin: 2px;
+    }
+    h1 {
+        font-size: 1.1rem;
+    }
+    .subtitle {
+        font-size: 0.8rem;
+    }
+    .generate-btn {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .container {
+        max-width: 95vw;
+        padding: 0 8px;
+    }
+    .card {
+        padding: 20px;
+        margin: 12px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .generate-btn {
+        font-size: 1rem;
+        padding: 14px;
+    }
+}
