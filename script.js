@@ -137,5 +137,41 @@ class PasswordGenerator {
 
 // Initialize the password generator when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new PasswordGenerator();
+    const generator = new PasswordGenerator();
+
+    // Password Tester functionality
+    const testInput = document.getElementById('testPasswordInput');
+    const testBtn = document.getElementById('testPasswordBtn');
+    const testStrengthFill = document.getElementById('testStrengthFill');
+    const testStrengthText = document.getElementById('testStrengthText');
+
+    function updateTestStrength(score) {
+        testStrengthFill.className = 'strength-fill';
+        if (score < 30) {
+            testStrengthFill.classList.add('weak');
+            testStrengthText.textContent = 'Weak Password';
+        } else if (score < 60) {
+            testStrengthFill.classList.add('fair');
+            testStrengthText.textContent = 'Fair Password';
+        } else if (score < 80) {
+            testStrengthFill.classList.add('good');
+            testStrengthText.textContent = 'Good Password';
+        } else {
+            testStrengthFill.classList.add('strong');
+            testStrengthText.textContent = 'Strong Password';
+        }
+    }
+
+    testBtn.addEventListener('click', () => {
+        const password = testInput.value;
+        const score = generator.calculateStrength(password);
+        updateTestStrength(score);
+    });
+
+    // Optional: live update as user types
+    testInput.addEventListener('input', () => {
+        const password = testInput.value;
+        const score = generator.calculateStrength(password);
+        updateTestStrength(score);
+    });
 });

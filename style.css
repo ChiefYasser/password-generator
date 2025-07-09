@@ -241,6 +241,185 @@ h1 {
     display: block;
 }
 
+/* Add spacing between the two main sections */
+.container + .container {
+    margin-top: 40px;
+}
+
+/* Password Tester Section Styling */
+.password-tester {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+#testPasswordInput {
+    flex: 1;
+    padding: 16px;
+    border: 2px solid #FCF7F8;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+    background: #FCF7F8;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+#testPasswordInput:focus {
+    outline: none;
+    border-color: #A31621;
+    box-shadow: 0 0 0 3px rgba(163, 22, 33, 0.1);
+}
+
+#testPasswordBtn {
+    background: #A31621;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(163, 22, 33, 0.15);
+    min-width: 120px;
+}
+
+#testPasswordBtn:hover {
+    background: #8a1219;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(163, 22, 33, 0.2);
+}
+
+/* Tester card subtle distinction */
+.card h2 {
+    color: #A31621;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.card .password-tester {
+    margin-top: 12px;
+}
+
+/* Tester strength indicator tweaks */
+#testStrengthFill.strength-fill {
+    transition: width 0.4s cubic-bezier(.4,2,.6,1), background 0.3s;
+}
+#testStrengthText {
+    font-size: 0.95rem;
+    color: #444;
+    text-align: center;
+    display: block;
+    font-weight: 500;
+}
+
+/* Section divider styling */
+.section-divider {
+    width: 100%;
+    text-align: center;
+    margin: 48px 0 0 0;
+    position: relative;
+    z-index: 1;
+}
+.section-divider span {
+    background: #fff;
+    color: #A31621;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0 18px;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 1px;
+}
+.section-divider:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #FCF7F8 0%, #A31621 50%, #FCF7F8 100%);
+    z-index: 1;
+}
+
+/* Tester card premium look */
+.tester-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f7f7fa 100%);
+    border: 2px solid #f3c5cb;
+    box-shadow: 0 8px 32px rgba(163, 22, 33, 0.10), 0 1.5px 8px rgba(163,22,33,0.08);
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+}
+.tester-card h2 {
+    color: #A31621;
+    font-size: 1.7rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+.tester-card .subtitle {
+    color: #a31621cc;
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+    font-weight: 500;
+}
+
+/* Input with icon styling */
+.input-icon-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0.7;
+}
+#testPasswordInput {
+    padding-left: 40px;
+    background: #fff6f7;
+    border: 2px solid #f3c5cb;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+#testPasswordInput:focus {
+    border-color: #A31621;
+    box-shadow: 0 0 0 3px #f3c5cb66;
+}
+
+/* Tester button tweaks */
+#testPasswordBtn {
+    background: linear-gradient(90deg, #A31621 60%, #f3c5cb 100%);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 2px 8px rgba(163, 22, 33, 0.10);
+}
+#testPasswordBtn:hover {
+    background: linear-gradient(90deg, #8a1219 60%, #f3c5cb 100%);
+}
+
+/* Tester strength bar tweaks */
+#testStrengthFill.strength-fill {
+    transition: width 0.5s cubic-bezier(.4,2,.6,1), background 0.3s;
+    border-radius: 4px;
+}
+#testStrengthText {
+    font-size: 1.05rem;
+    color: #A31621;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
 @media (max-width: 480px) {
     .container {
         max-width: 100vw;
@@ -278,6 +457,35 @@ h1 {
     }
     .strength-indicator {
         margin-top: 16px;
+    }
+    .container + .container {
+        margin-top: 24px;
+    }
+    .password-tester {
+        flex-direction: column;
+        gap: 8px;
+    }
+    #testPasswordBtn {
+        min-width: 0;
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1rem;
+    }
+    #testPasswordInput {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    .section-divider {
+        margin: 32px 0 0 0;
+    }
+    .tester-card {
+        padding: 12px;
+    }
+    .input-icon {
+        left: 8px;
+    }
+    #testPasswordInput {
+        padding-left: 36px;
     }
 }
 
